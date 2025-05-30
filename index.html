@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday!</title>
+  <style>
+    :root {
+      --primary-bg: #3b2618;
+      --card-bg: rgba(249, 227, 202, 0.95);
+      --accent-color: #b1724f;
+      --text-dark: #4a2e1e;
+      --text-soft: #6e4a32;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background: url('download (48).jpg') no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: Georgia, serif;
+      padding: 0 20px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      padding: 24px 32px;
+      border-radius: 16px;
+      width: 100%;
+      max-width: 550px;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      transform: scale(0.95);
+      opacity: 0;
+      animation: popup 0.8s ease-out forwards;
+    }
+
+    @keyframes popup {
+      0% {
+        transform: scale(0.6);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .card h1 {
+      font-size: 2.2em;
+      color: var(--accent-color);
+      margin-bottom: 18px;
+    }
+
+    .card p {
+      font-size: 1.1em;
+      color: var(--text-dark);
+      margin-bottom: 14px;
+      line-height: 1.6;
+    }
+
+    .btn {
+      margin-top: 20px;
+      padding: 10px 22px;
+      background-color: var(--accent-color);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1em;
+      transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #93583a;
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        padding: 20px;
+      }
+
+      .card h1 {
+        font-size: 1.8em;
+      }
+
+      .card p {
+        font-size: 1em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <audio id="popupSound" src="popup-sound.mp3" preload="auto"></audio>
+
+  <div class="card">
+    <h1>Happy Birthday Mine! 🎂</h1>
+    <p>Selamat membuka lembaran yang ke-19, Yasmine-ku sayang 🎁✨</p>
+    <p>Semoga di tahun ini kamu menemukan banyak kebahagiaan, jawaban atas segala keresahan, dan kebaikan-kebaikan lainnya yang selalu kamu dambakan.</p>
+    <p>Walaupun terpaut jarak, aku pengen min inget kalau aku tetap ada di sini, berdoa dan selalu berharap yang terbaik buat min.</p>
+    <p>Jaga kesehatan ya sayangku. Me love you always. ❤️</p>
+    <p> -farah </p>
+    <button class="btn" onclick="fireConfetti()">Pop This!</button>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script>
+    function fireConfetti() {
+      confetti({
+        particleCount: 200,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
+
+      const audio = document.getElementById("popupSound");
+      audio.play().catch(err => console.log("Autoplay error:", err));
+    }
+
+    window.onload = function () {
+      fireConfetti();
+      document.getElementById("popupSound").play().catch(err => console.log("Audio blocked:", err));
+    };
+  </script>
+
+</body>
+</html>
